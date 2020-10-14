@@ -15,7 +15,9 @@ const db = knex({
     // user : 'postgres',
     // password : 'Infinite7*',
     // database : 'smartbrain'
-    ssl: true,
+    ssl: {
+    rejectUnauthorized: false
+  }
   }
 });
 
