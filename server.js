@@ -23,42 +23,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const database = {
-// 	users: [
-// 		{
-// 			id:'123',
-// 			name: 'John',
-// 			password: 'cookies',
-// 			email: 'john@gmail.com',
-// 			entries: 0,
-// 			joined: new Date()
-// 		},
-// 				{
-// 			id:'124',
-// 			name: 'Sally',
-// 			password: 'bananas',
-// 			email: 'sally@gmail.com',
-// 			entries: 0,
-// 			joined: new Date()
-// 		},
-// 				{
-// 			id:'125',
-// 			name: 'Bob',
-// 			password: 'grapes',
-// 			email: 'bob@gmail.com',
-// 			entries: 0,
-// 			joined: new Date()
-// 		}
-// 	]
-// 	// login: [
-// 	// {
-// 	// 	id: '789',
-// 	// 	hash: '',
-// 	// 	email: 'john@gmail.com'
-// 	// }
-// 	// ]
-// }
-
 app.get('/', (req, res) => {res.send('success')});
 
 // app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)});
@@ -75,6 +39,8 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)});
 app.listen(process.env.PORT || 3001, () => {
 	console.log(`app is running on port ${process.env.PORT}`);
 })
+
+//
 
 // / --> res = this is working
 // /signin --> POST = success/fail
