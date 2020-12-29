@@ -1,5 +1,5 @@
 
-const handleRegister = (req,res, db, bcrypt) => {
+const handleRegister = (req, res, db, bcrypt) => {
 	const { name, email, password } = req.body;
 	if(!email || !name || !password){
 		return res.status(400).json('incorrect form submission');
@@ -15,14 +15,14 @@ const handleRegister = (req,res, db, bcrypt) => {
 	// 	entries: 0,
 	// 	joined: new Date()
 	// })
-	db.transaction(trx=>{
+	db.transaction(trx => {
 		trx.insert({
 			hash: hash,
 			email: email
 		})
 		.into('login')
 		.returning('email')
-		.then(loginEmail =>{
+		.then(loginEmail => {
 			return trx('users')
 			.returning('*')
 			.insert({
@@ -30,14 +30,14 @@ const handleRegister = (req,res, db, bcrypt) => {
 				email: loginEmail[0],
 				joined: new Date()
 			})
-			.then(user =>{
+			.then(user => {
 				res.json(user[0]); //return an object instead of an array
 			})
 		})
 		.then(trx.commit)
 		.catch(trx.rollback)
 	})
-	.catch(err => res.status(400).json('unable to join'))
+	.catch(err => res.status(400).json('unable to register'))
 	}
 
 

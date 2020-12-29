@@ -1,4 +1,4 @@
-const handleProfileGet = (req,res, db) => {
+const handleProfileGet = (req, res, db) => {
 	const { id } = req.params;
 	// let found = false;
 	// database.users.forEach(user => {
@@ -8,15 +8,15 @@ const handleProfileGet = (req,res, db) => {
 	// 	}
 	// })
 	db.select('*').from('users').where({id: id})
-	.then(user=>{
+	.then(user => {
 		// console.log(user) // return [] if no id found
 		if(user.length){
 			res.json(user[0]);			
 		} else {
-			res.status(400).json('not found')
+			res.status(400).json('not found');
 		}
 	})
-	.catch(err=> res.status(400).json('error getting user'))
+	.catch(err => res.status(400).json('error getting user'))
 	// if(!found) {
 	// 	res.status(400).json('user not found')
 	// }
