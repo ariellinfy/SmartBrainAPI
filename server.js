@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -18,14 +19,9 @@ const db = knex({
   }
 });
 
-// db.select('*').from('users').then(data => {
-// 	console.log(data);
-// });
-
 const app = express();
-
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 // const database = {
 // 	users: [
@@ -88,4 +84,5 @@ app.listen(process.env.PORT || 3001, () => {
 
 //heroku apps
 //smart-brain-app-al - frontend
-//aqueous-cliffs-15853 - backend
+//aqueous-cliffs-15853 - backend server
+//postgresql-cylindrical-41098 (addon in aqueous-cliffs-15853) - backend database
